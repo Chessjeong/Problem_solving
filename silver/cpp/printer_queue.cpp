@@ -1,39 +1,39 @@
 #include <iostream>
-#include <vector>
-#include <queue>
-#include <algorithm>
+#include <deque>
 
 using namespace std;
-bool deac(int a, int b) return a > b;
-
-void printer(){
-    int N, target;
-    cin >> N >> M;
-    vector<int> importances;
-    for(int i = 0; i< N; i++){
-        int importance;
-        cin >> importance;
-        importances.push_back(importance);
-    }
-    int target = importances[M];
-    vector<int>::iterator iter;
-    int max_num = 0;
-    int max_idx = -1;
-    int ans = 0;
-    for(iter=importances.begin(); iter!= importances.end(); iter++){
-        int cur = *iter;
-        if(cur>max_num){
-            max_num = cur;
-            max_idx = iter - importances.begin()
-        }
-        if(cur > target) ans++;
-        if (cur == )
-    }
-}
 
 int main(){
     int test_num;
     cin >> test_num;
-    for(int i = 0; i<test_num; i++) printer();
+    for(int i=0; i<test_num; i++){
+        int N, target, target_imp=0;
+        cin >> N >> target;
+        deque <pair<int,int>> imp;
+        for(int i=0; i<N; i++){
+            int importance;
+            cin >> importance;
+            if(i==target) target_imp=importance;
+            imp.push_back(make_pair(importance,i));
+        }
+        int ans=0;
+        while(true){
+            bool printable=true;
+            pair<int,int> curr = imp.front();
+            imp.pop_front();
+            for(int i =0; i<imp.size(); i++){
+                if(imp[i].first>curr.first){
+                    printable=false;
+                    break;
+                }
+            }
+            if(printable){
+                ans++;
+                if(curr.second==target) break;
+            }            
+            else imp.push_back(curr);
+        }
+        cout << ans << endl;
+    }
     return 0;
 }
