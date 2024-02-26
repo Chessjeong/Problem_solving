@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+class Node{
+    public:
+        int value;
+        Node* prev;
+        Node* next;
+        Node(int n){
+            value=n;
+            prev =NULL;
+            next =NULL;
+        }
+};
+
+class Dual_Priority_Queue{
+    private:
+        Node* head;
+        Node* tail;
+    public:
+        int size;
+        Dual_Priority_Queue(){
+            head = NULL;
+            tail = NULL;
+            size = 0;
+        }
+        void insert(int n){
+            Node* curr = new Node(n);
+
+        }
+
+};
