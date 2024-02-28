@@ -3,7 +3,6 @@
 #include <numeric>
 
 using namespace std;
-
 int main(){
     int test_num;
     cin>> test_num;
